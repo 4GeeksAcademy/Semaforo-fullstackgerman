@@ -1,11 +1,92 @@
-/* 
+:root {
+  --gap: 20px;
+  --light-size: 80px;
+  --red: #ff4b4b;
+  --dark-red: #a00000;
+  --yellow: #ffeb3b;
+  --dark-yellow: #b29b00;
+  --green: #4caf50;
+  --dark-green: #0f3d15;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.traffic-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
 
-*/
+.traffic-body {
+  background: #202020;
+  width: 150px;
+  padding: 20px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+.light {
+  width: var(--light-size);
+  height: var(--light-size);
+  border-radius: 50%;
+  position: relative;
+  transition: 0.3s ease;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.red {
+  background: radial-gradient(circle, var(--red), var(--dark-red));
+}
+
+.yellow {
+  background: radial-gradient(circle, var(--yellow), var(--dark-yellow));
+}
+
+.green {
+  background: radial-gradient(circle, var(--green), var(--dark-green));
+}
+
+.light.active {
+  filter: brightness(1.8);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 
+              0 0 20px currentColor,
+              0 0 30px currentColor, 
+              inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.toggle-btn {
+  background: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 20px;
+}
+
+.toggle-btn:hover {
+  background: #ff6b6b;
+}
+
+
+.glow-red {
+  box-shadow: 0px 0px 9px 4px red;
+  animation: glow 0.8s linear infinite alternate;
+}
+.glow-yellow {
+  box-shadow: 0px 0px 9px 4px yellow;
+  animation: glow 0.8s linear infinite alternate;
+}
+.glow-green {
+  box-shadow: 0px 0px 9px 4px green;
+  animation: glow 0.8s linear infinite alternate;
+}
+@keyframes glow {
+  to {
+      box-shadow: 0px 0px 30px 20px yellowgreen;
+  }
+}

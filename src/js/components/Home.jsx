@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import "../../styles/index.css";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+  const [active, setActive] = useState("red");
+  
+  const toggleLight = () => {
+	if (active === "red") setActive ("green");
+	else if (active === "green") setActive ("yellow");
+	else setActive ("red");
+ };
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  return (
+    <div className="traffic-container">
+      <div className="traffic-body">
+        <div
+          className={`light red ${active === "red" ? "active glow-red" : ""}`}
+          onClick={() => setActive("red")}
+        ></div>
+
+        <div
+          className={`light yellow ${active === "yellow" ? "active glow-yellow " : ""}`}
+          onClick={() => setActive("yellow")}
+        ></div>
+
+        <div
+          className={`light green ${active === "green" ? "active glow-green" : ""}`}
+          onClick={() => setActive("green")}
+        ></div>
+      </div>
+	  <button className="toggle-btn gp-2" onClick={toggleLight}>Cambiar color</button>
+    </div>
+  );
 };
 
 export default Home;
